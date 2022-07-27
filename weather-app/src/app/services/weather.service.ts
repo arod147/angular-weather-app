@@ -12,14 +12,10 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
   getWeatherData(cityName: string): Observable<WeatherData> {
-    return this.http.get<WeatherData>(environment.weatherApiBaseUrl, {
+    return this.http.get<WeatherData>(environment.weatherApiBaseUrl + `/city/${cityName}`, {
       headers: new HttpHeaders()
       .set(environment.XRapidAPIHostHeaderName, environment.XRapidAPIHostHeaderValue)
       .set(environment.XRapidAPIKeyHeaderName, environment.XRapidAPIKeyHeaderValue),
-      params: new HttpParams()
-      .set('q', cityName)
-      .set('units', 'metric')
-      .set('mode', 'json')  
     })
   }
 }

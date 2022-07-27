@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getWeatherData(this.cityName);
     this.cityName = ''
+    console.log(this.weatherData)
   }
 
   onSubmit() {
